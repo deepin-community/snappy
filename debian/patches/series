@@ -1,0 +1,3 @@
+build_static_lib.patch
+readd_pkgconfig_support.patch
+fix_snappy_unittest_FTBFS.patch
