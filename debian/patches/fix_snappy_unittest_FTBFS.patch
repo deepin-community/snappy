@@ -11,13 +11,13 @@ diff --git a/CMakeLists.txt b/CMakeLists.txt
 index 41a2124..2a822dd 100644
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
-@@ -242,6 +242,9 @@ if(SNAPPY_BUILD_TESTS)
-   target_compile_definitions(snappy_unittest PRIVATE -DHAVE_CONFIG_H)
-   target_link_libraries(snappy_unittest snappy ${GFLAGS_LIBRARIES})
+@@ -293,6 +293,9 @@ if(SNAPPY_BUILD_TESTS OR SNAPPY_BUILD_BE
+ 
+   target_link_libraries(snappy_test_support snappy)
  
 +  if(HAVE_GTEST)
-+    target_link_libraries(snappy_unittest gtest)
++    target_link_libraries(snappy_test_support gtest)
 +  endif(HAVE_GTEST)
    if(HAVE_LIBZ)
-     target_link_libraries(snappy_unittest z)
+     target_link_libraries(snappy_test_support z)
    endif(HAVE_LIBZ)

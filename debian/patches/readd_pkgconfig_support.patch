@@ -2,7 +2,7 @@ diff --git a/CMakeLists.txt b/CMakeLists.txt
 index e9e70c8..be4938e 100644
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
-@@ -221,6 +221,15 @@ ADD_LIBRARY(snappy-static STATIC
+@@ -268,6 +268,15 @@ target_include_directories(snappy-static
  
  SET_TARGET_PROPERTIES(snappy-static PROPERTIES OUTPUT_NAME snappy)
  
@@ -15,9 +15,9 @@ index e9e70c8..be4938e 100644
 +  install(FILES "${PROJECT_BINARY_DIR}/snappy.pc" DESTINATION lib/$ENV{DEB_HOST_MULTIARCH}/pkgconfig)
 +endif(UNIX)
 +
- if(SNAPPY_BUILD_TESTS)
-   enable_testing()
- 
+ if(SNAPPY_BUILD_TESTS OR SNAPPY_BUILD_BENCHMARKS)
+   add_library(snappy_test_support "")
+   target_sources(snappy_test_support
 diff --git a/cmake/snappy.pc.in b/cmake/snappy.pc.in
 new file mode 100644
 index 0000000..6c43545
