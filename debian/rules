@@ -8,7 +8,12 @@ DEVPKGDIR:=$(CURDIR)/debian/libsnappy-dev
 
 override_dh_auto_configure:
 	dh_auto_configure -- \
-		-DCMAKE_BUILD_TYPE=RelWithDebInfo -DCMAKE_INSTALL_LIBDIR=/usr/lib/${DEB_HOST_MULTIARCH} -DBUILD_SHARED_LIBS=on
+		-DCMAKE_CXX_STANDARD=14 \
+		-DCMAKE_BUILD_TYPE=RelWithDebInfo \
+		-DCMAKE_INSTALL_LIBDIR=/usr/lib/${DEB_HOST_MULTIARCH} -DBUILD_SHARED_LIBS=ON \
+		-DSNAPPY_ENABLE_RTTI=ON \
+		-DSNAPPY_USE_BUNDLED_GTEST=OFF \
+		-DSNAPPY_USE_BUNDLED_BENCHMARK_LIB=OFF
 
 override_dh_install:
 	dh_install
